@@ -1,0 +1,28 @@
+modules:
+  jira:issuePanel:
+    - key: forge-issue-panel-open-by-default
+      resource: main
+      render: native
+      title: Open By Default
+      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+  trigger:
+    - key: issue-created-trigger
+      function: issue-created
+      events:
+        - avi:jira:created:issue
+  function:
+    - key: issue-created
+      handler: trigger.onIssueCreated
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+app:
+  runtime:
+    name: nodejs22.x
+    memoryMB: 256
+    architecture: arm64
+  id: ari:cloud:ecosystem::app/edf01534-c128-4743-8dbd-0362047bbd39
+permissions:
+  scopes:
+    - read:jira-work
+    - write:jira-work
