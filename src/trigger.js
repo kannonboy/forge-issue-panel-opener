@@ -6,7 +6,7 @@ const issuePanelKey = 'forge-issue-panel-open-by-default';
 export async function onIssueCreated(event) {
   // construct the special entity property key determining issue panel visibility
   const { issue } = event;
-  const { appAri, environmentAri }  = getAppContext();
+  const { appAri, environmentAri } = getAppContext();
   const { appId } = appAri;
   const { environmentId } = environmentAri;
   const propertyKey = `ari:cloud:ecosystem::extension/${appId}/${environmentId}/static/${issuePanelKey}`;
@@ -18,6 +18,7 @@ export async function onIssueCreated(event) {
     "collapsed": false // you can also toggle the to true to collapse it again
   }];
 
+  // set the special entity property on the newly created issue
   const response = await api.asApp().requestJira(route`/rest/api/3/issue/${issue.id}/properties/${encodeURIComponent(propertyKey)}`, {
     method: 'PUT',
     headers: {

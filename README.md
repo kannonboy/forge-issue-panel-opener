@@ -1,12 +1,14 @@
 # Forge Issue Panel Opener
 
-This project is a [Forge](https://developer.atlassian.com/platform/forge/) app for Jira that automatically opens a custom issue panel by default when a new issue is created.
+This project is a [Forge](https://developer.atlassian.com/platform/forge/) app for Jira that ensures a custom issue panel is expanded by default (i.e. will not require the user to click the button in the action button in the toolbar). 
+
+This is a workaround for https://ecosystem.atlassian.net/browse/FRGE-734 and based on the approach pioneered by Vladislav Bykouski & David Pinn described in the comments.
 
 ## Features
 
 - Adds a custom issue panel ("Open By Default") to Jira issues.
-- Uses a trigger to set an entity property on issue creation, ensuring the panel is open by default.
-- Built with Forge, using React for the frontend and Node.js for backend logic.
+- Uses a trigger to set a special entity property on issue creation, ensuring the panel is open by default.
+- Built with Forge, using UI Kit for the frontend and Node.js for backend logic.
 
 ## Requirements
 
